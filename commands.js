@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = "NzMxMDU3OTY0MjAyNDU5MTY2.XxMEDg.DSiNdteVAwy7hNRIIJBvcPAuzN4";
+const token = "für den Token";
 var mode;
 
 function checkCommand(message, commandName)
