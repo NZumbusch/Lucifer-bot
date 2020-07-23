@@ -1,41 +1,5 @@
-Array.prototype.random = function () {
-    return this[Math.floor(Math.random() * this.length)];
-};
-
-function checkCommand(message, commandName) {
-    return message.toLowerCase().startsWith("$" + commandName);
-}
-
-function strongCheckCommand(message, commandName) {
-    return message.startsWith("!" + commandName);
-}
-
-function random(number, length, characters) {
-    let sequence = "";
-
-    for (let f = 0; f < length * number; f++) {
-        if (f % number == 0 && f != 0) {
-            sequence = sequence + " ";
-            console.log(number, length);
-        }
-        console.log(sequence);
-        sequence += characters.random();
-    }
-    return sequence;
-}
-
-function sendm(channelID, message) {
-    bot.sendMessage({
-        to: channelID,
-        message: message,
-    });
-}
-
-var mode = 0;
-
-
 var commands = require("./commands.js")
-var Discord = require("discord.io");
+var Discord = require("discord.js");
 var logger = require("winston");
 var auth = require("./auth.json");
 var config = require("./config.json");
@@ -46,31 +10,24 @@ logger.add(new logger.transports.Console(), {
 });
 logger.level = "debug";
 
-var bot = new Discord.Client({
-    token: auth.token,
-    autorun: true,
-});
+const bot = new Discord.Client();
+bot.login(auth.token);
 
-bot.on("ready", function (evt) {
+
+bot.on("ready", function () {
     logger.info("Connected");
     logger.info("Logged in as: ");
-    logger.info(bot.username + " - (" + bot.id + ")");
+    logger.info(bot.user);
 });
 
-bot.on("message", (user, userID, channelID, message, evt) => {
-    var event = {
-        user: user,
-        userID: userID,
-        channelID: channelID,
-        message: message,
-        evt: evt,
-    };
-    message = event.evt.d;
+bot.on("message", ( message) => {
+
+
     if (message.author.bot) {
         return;
     }
 
     if (message.content[0] == config.commandChar) {
-        commands.issue(message, event);
+        commands.issue(message, bot);
     }
 });

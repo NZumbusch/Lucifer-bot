@@ -1,9 +1,10 @@
-function issue (message, event) {
+function issue (message, bot) {
     const args = message.content.slice(1).trim().split(/ +/);
+    console.log(args)
     const command = args.shift().toLowerCase();
     if (command_list[0].indexOf(command) != -1) {
-        let command = require("./commands/" + command + ".js")
-        command.issue(message, event, args, command)
+        let command_file = require("./commands/" + command + "/main.js")
+        command_file.issue(message, args, command, bot)
     }
 }
 
@@ -20,11 +21,11 @@ function issue (message, event) {
 
 
 
-var config = require("./config.json")
+const config = require("./config.json")
 var command_list = require("./commands/list.json")
 
 module.exports = {
-    issue: function (message, event) {
-        issue(message, event)
+    issue: function (message, bot) {
+        issue(message,  bot)
     }
 };
