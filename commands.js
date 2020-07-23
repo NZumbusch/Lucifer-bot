@@ -4,7 +4,7 @@ Array.prototype.random = () => {
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const token = "für den Token";
+const token = process.env["TOKEN"]
 var mode;
 
 function checkCommand(message, commandName) {
