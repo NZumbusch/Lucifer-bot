@@ -21,7 +21,7 @@ var bot = new Discord.Client({
 });
 
 function checkCommand(message, commandName) {
-    return message.toLowerCase().startsWith("!" + commandName);
+    return message.toLowerCase().startsWith("$" + commandName);
 }
 
 function strongCheckCommand(message, commandName) {
