@@ -5,8 +5,10 @@
     "main": "bot.js",
     "author": "LuciferMonao",
     "dependencies": {
+        "algebra.js": "^0.2.6",
         "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
         "discord.js": "^12.2.0",
+        "math-expression-evaluator": "^1.2.22",
         "nodemailer": "^6.4.10",
         "winston": "^3.3.3"
     }
