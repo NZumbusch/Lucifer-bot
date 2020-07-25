@@ -23,8 +23,8 @@ function issue (message, bot) {
 
 
 
-
-var command_list = require("./commands/list.json")
+const config = require("./config.json")
+const command_list = require("./commands/list.json")
 
 module.exports = {
     issue: function (message, bot) {

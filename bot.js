@@ -1,7 +1,8 @@
-var commands = require("./commands.js")
-var Discord = require("discord.js");
-var logger = require("winston");
-var auth = require("./auth.json");
+const commands = require("./commands.js")
+const Discord = require("discord.js");
+const logger = require("winston");
+const auth = require("./auth.json");
+const config = require("./config.json");
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console(), {
@@ -26,8 +27,7 @@ bot.on("message", ( message) => {
         return;
     }
 
-    let config = require("./config.json");
-
+    
     if (message.content[0] == config.commandChar) {
         commands.issue(message, bot);
     }
