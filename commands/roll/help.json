@@ -1,0 +1,7 @@
+[
+    "Use this command to roll a dice, or even multiple!",
+    "The first argument describes the number of sides the dice should have.",
+    "The second is the amount of dice,",
+    "While the third is the seperator of the output.",
+    "Default values are 6 for the sides, 1 for the amount and , as the seperator."
+]

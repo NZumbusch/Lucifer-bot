@@ -1,5 +1,7 @@
 [
     "mail",
     "calc",
-    "help"
+    "help",
+    "weather",
+    "roll"
 ]

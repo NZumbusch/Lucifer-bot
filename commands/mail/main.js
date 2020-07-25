@@ -14,6 +14,12 @@ function issue(message, args, command, bot) {
                 let number = element.slice(12)
                 amount = number;
                 console.log("Amount = " + number +"-" + amount)
+                args.forEach(element => {
+                    if (element.indexOf("-|-AMOUNT-|-") != -1) {
+                        args.splice(args.indexOf(element), 1)
+                    }
+                })
+                console.log(args)
             }
         })
     }

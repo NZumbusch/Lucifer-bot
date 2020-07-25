@@ -12,7 +12,6 @@ function issue(message, args, command, bot) {
             try {
                 let expr = new algebra.parse(args[0]);
             let sol = "Solution: " + expr.solveFor(args[1]);
-            console.log(sol);
             message.channel.send(sol);
             } catch {
                 message.channel.send("Error while solving, please check your command.")

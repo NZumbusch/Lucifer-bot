@@ -3,7 +3,7 @@ function issue (message, bot) {
     const command = args.shift().toLowerCase();
     for (element in command_list) {
         if (command_list[element].indexOf(command) != -1) {
-            console.log(command)
+            console.log("Command:" + "\n.    author: " + message.author.tag + "\n.    content: " + message.content + "\n.    channel: " + message.channel.name + "\n.    guild: " + message.guild.name)
             let command_file = require("./commands/" + command + "/main.js")
             command_file.issue(message, args, command, bot)
         }
