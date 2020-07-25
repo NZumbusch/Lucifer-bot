@@ -23,7 +23,6 @@ function issue(message, args, command, bot) {
 const algebra = require("algebra.js");
 const mexp = require("math-expression-evaluator");
 const developers = require("../../developers.json");
-const config = require("../../config.json");
 const auth = require("../../auth.json");
 
 module.exports = {

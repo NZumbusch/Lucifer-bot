@@ -51,7 +51,6 @@ var weather_list = {};
 const fetch = require("node-fetch");
 const request = require("request");
 const developers = require("../../developers.json");
-const config = require("../../config.json");
 const auth = require("../../auth.json");
 
 module.exports = {

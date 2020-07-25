@@ -23,7 +23,7 @@ function issue (message, bot) {
 
 
 
-const config = require("./config.json")
+
 var command_list = require("./commands/list.json")
 
 module.exports = {

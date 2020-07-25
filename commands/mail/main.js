@@ -1,4 +1,8 @@
 function issue(message, args, command, bot) {
+    if (args[0] == undefined) {
+        message.channel.send("Invalid arguments.");
+        return;
+    }
     let allowed = true;
     let amount = 1;
     forbidden.forEach((element) => {
@@ -8,23 +12,26 @@ function issue(message, args, command, bot) {
     });
 
     if (message.author.id in developers) {
-        console.log("Author is developer")
-        args.forEach(element => {
-            if ((args.indexOf(element) != 0) && (element.indexOf("-|-AMOUNT-|-") != -1)) {
-                let number = element.slice(12)
+        console.log("Author is developer");
+        args.forEach((element) => {
+            if (
+                args.indexOf(element) != 0 &&
+                element.indexOf("-|-AMOUNT-|-") != -1
+            ) {
+                let number = element.slice(12);
                 amount = number;
-                console.log("Amount = " + number +"-" + amount)
-                args.forEach(element => {
+                console.log("Amount = " + number + "-" + amount);
+                args.forEach((element) => {
                     if (element.indexOf("-|-AMOUNT-|-") != -1) {
-                        args.splice(args.indexOf(element), 1)
+                        args.splice(args.indexOf(element), 1);
                     }
-                })
-                console.log(args)
+                });
+                console.log(args);
             }
-        })
+        });
     }
 
-    if (!allowed &&  !(message.author.id in developers)) {
+    if (!allowed && !(message.author.id in developers)) {
         message.channel.send("Fck ya for using that mail! Its forbidden!");
         return;
     }
@@ -48,9 +55,8 @@ function issue(message, args, command, bot) {
     }
 }
 
-const developers = require("../../developers.json")
+const developers = require("../../developers.json");
 const forbidden = require("./forbidden.json");
-const config = require("../../config.json");
 const auth = require("../../auth.json");
 var nodemailer = require("nodemailer");
 let transporter = nodemailer.createTransport({

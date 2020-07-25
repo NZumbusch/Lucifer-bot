@@ -33,7 +33,6 @@ function issue(message, args, command, bot) {
 
 var going = {};
 const developers = require("../../developers.json");
-const config = require("../../config.json");
 const auth = require("../../auth.json");
 
 module.exports = {

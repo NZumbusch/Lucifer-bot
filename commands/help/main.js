@@ -2,6 +2,7 @@ function issue(message, args, command, bot) {
     let mes = ".\n";
     if (args[0] == undefined) {
         for (co in commands) {
+            let config = require("../../config.json");
             com = commands[co]
             mes +=
                 "> " +
@@ -26,9 +27,9 @@ function issue(message, args, command, bot) {
     message.channel.send(mes);
 }
 
+
 const commands = ["help", "calc", "weather", "roll", "mail"]
 const developers = require("../../developers.json");
-const config = require("../../config.json");
 const auth = require("../../auth.json");
 
 module.exports = {
