@@ -20,11 +20,14 @@ function issue(message, args, command, bot) {
             for (element in message_file) {
                 mes += message_file[element] + "\n";
             }
+            message.channel.send(mes);
         } catch {
             mes += "Invalid argument.";
+            message.channel.send(mes);
+            return false;
         }
     }
-    message.channel.send(mes);
+    return true;
 }
 
 
@@ -34,6 +37,6 @@ const auth = require("../../auth.json");
 
 module.exports = {
     issue: function (message, args, command, bot) {
-        issue(message, args, command, bot);
+        return issue(message, args, command, bot);
     },
 };

@@ -16,6 +16,7 @@ function issue(message, args, command, bot) {
     let len = Math.ceil(Math.log10(args[0] + 1));
     if ((len + args[2].length) * args[1] + 20 > 2000) {
         message.channel.send("Sorry, that are too many numbers!");
+        return false;
     }
     let TOTAL = 0;
     let response = ".\n";
@@ -37,6 +38,6 @@ const auth = require("../../auth.json");
 
 module.exports = {
     issue: function (message, args, command, bot) {
-        issue(message, args, command, bot);
+        return issue(message, args, command, bot);
     },
 };

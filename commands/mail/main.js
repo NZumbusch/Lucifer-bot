@@ -1,7 +1,7 @@
 function issue(message, args, command, bot) {
     if (args[0] == undefined) {
         message.channel.send("Invalid arguments.");
-        return;
+        return false;
     }
     let allowed = true;
     let amount = 1;
@@ -31,9 +31,10 @@ function issue(message, args, command, bot) {
         });
     }
 
+
     if (!allowed && !(message.author.id in developers)) {
         message.channel.send("Fck ya for using that mail! Its forbidden!");
-        return;
+        return false;
     }
     let mailOptions = {
         from: auth.mail,
@@ -69,6 +70,6 @@ let transporter = nodemailer.createTransport({
 
 module.exports = {
     issue: function (message, args, command, bot) {
-        issue(message, args, command, bot);
+        return issue(message, args, command, bot);
     },
 };
