@@ -1,3 +1,4 @@
+function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
 function issue(message, args, command, bot) {
     if (args[0] == undefined) {
         message.channel.send("Invalid arguments.");
@@ -12,7 +13,6 @@ function issue(message, args, command, bot) {
     });
 
     if (message.author.id in developers) {
-        console.log("Author is developer");
         args.forEach((element) => {
             if (
                 args.indexOf(element) != 0 &&
@@ -20,13 +20,11 @@ function issue(message, args, command, bot) {
             ) {
                 let number = element.slice(12);
                 amount = number;
-                console.log("Amount = " + number + "-" + amount);
                 args.forEach((element) => {
                     if (element.indexOf("-|-AMOUNT-|-") != -1) {
                         args.splice(args.indexOf(element), 1);
                     }
                 });
-                console.log(args);
             }
         });
     }
@@ -48,17 +46,23 @@ function issue(message, args, command, bot) {
             if (error) {
                 console.log(error);
                 message.channel.send("Error: " + error);
+                return false;
             } else {
                 console.log("Email sent: " + info.response);
                 message.channel.send("Success: " + info.response);
             }
         });
     }
+    return true;
 }
 
+nocache("../../developers.json")
+nocache("./forbidden.json")
+nocache("../../auth.json")
 const developers = require("../../developers.json");
 const forbidden = require("./forbidden.json");
 const auth = require("../../auth.json");
+const fs = require("fs")
 var nodemailer = require("nodemailer");
 let transporter = nodemailer.createTransport({
     service: "gmail",

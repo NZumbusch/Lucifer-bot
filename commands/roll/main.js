@@ -1,3 +1,4 @@
+function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
 function roll(sides) {
     return Math.floor(Math.random() * sides) + 1;
 }
@@ -32,7 +33,7 @@ function issue(message, args, command, bot) {
     message.channel.send(response);
 }
 
-var going = {};
+nocache("")
 const developers = require("../../developers.json");
 const auth = require("../../auth.json");
 

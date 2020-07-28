@@ -1,3 +1,5 @@
+function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
+
 function issue (message, bot) {
     const args = message.content.slice(1).trim().split(/ +/);
     const command = args.shift().toLowerCase();
@@ -33,7 +35,8 @@ function issue (message, bot) {
 
 
 
-
+nocache("./config.json")
+nocache("./commands/list.json")
 const config = require("./config.json")
 const command_list = require("./commands/list.json")
 

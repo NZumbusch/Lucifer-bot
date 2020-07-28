@@ -1,8 +1,8 @@
+function nocache(module) {require("fs").watchFile(require("path").resolve(module), () => {delete require.cache[require.resolve(module)]})}
 function issue(message, args, command, bot) {
     let mes = ".\n";
-    if (args[0] == undefined) {
+    if (args.length === 0) {
         for (co in commands) {
-            let config = require("../../config.json");
             com = commands[co]
             mes +=
                 "> " +
@@ -14,6 +14,7 @@ function issue(message, args, command, bot) {
                 com +
                 " for more info.\n";
         }
+        message.channel.send(mes);
     } else {
         try {
             let message_file = require("../" + args[0] + "/help.json");
@@ -31,7 +32,12 @@ function issue(message, args, command, bot) {
 }
 
 
-const commands = ["help", "calc", "weather", "roll", "mail"]
+nocache("../list.json")
+nocache("../../developers.json")
+nocache("../../auth.json")
+nocache("../../config.json")
+const config = require("../../config.json");
+const commands = require("../list.json")
 const developers = require("../../developers.json");
 const auth = require("../../auth.json");
 
