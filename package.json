@@ -10,7 +10,7 @@
         "discord.js": "^12.2.0",
         "fs": "0.0.1-security",
         "math-expression-evaluator": "^1.2.22",
-        "node-fetch": "^2.6.0",
+        "node-fetch": "^2.6.1",
         "nodemailer": "^6.4.10",
         "request": "^2.88.2",
         "winston": "^3.3.3"
